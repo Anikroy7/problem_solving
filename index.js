@@ -105,7 +105,7 @@ function createPhoneNumber(numbers) {
 
 */
 
-const arr = [1,1,1,1,1,1,1,];
+const arr = [1, 1, 1, 2, 88, 99, 66, 71, 1, 1, 1];
 
 const arrOfObj = arr.reduce((acc, curr) => {
   let obj = {
@@ -114,7 +114,7 @@ const arrOfObj = arr.reduce((acc, curr) => {
 
   const findedElement = acc.find((e) => e[curr]);
   if (findedElement) {
-    findedElement[curr]++
+    findedElement[curr]++;
     acc.push(findedElement);
   } else {
     acc.push(obj);
@@ -123,4 +123,50 @@ const arrOfObj = arr.reduce((acc, curr) => {
   return acc;
 }, []);
 
-console.log(new Set(arrOfObj));
+// console.log(new Set(arrOfObj));
+
+//problem 4
+
+/* 
+There is a collection of input strings and a collection of query strings. For each query string, determine how many times it occurs in the list of input strings. Return an array of the results.
+
+strings = ['ab', 'ab', 'abc']
+queires =['ab', 'abc', 'abd']
+
+result =[2,1,0]
+*/
+/* 
+// Pseudo code 
+
+ step 1: make an object that give how many time an item repate or not based on string 
+        object=  {
+                  ab: 2,
+                  abc:1
+                  }
+ step :2 run a for loop then check every quries in this value if this value exits on this object then 
+ set this value in this position if no exists then set value 0 in this position
+                
+*/
+
+const strings = ["ab", "ab", "abc", 'jfk'];
+const queries = ["ab",'ab', "abc", "abd", 'jfk'];
+
+function matchingStrings(strings, queries) {
+  // Write your code here
+  const stringsToObj = {};
+
+  for (let v of strings) {
+    stringsToObj[v] = (stringsToObj[v] || 0) + 1;
+  }
+
+  for (let i = 0; i < queries.length; i++) {
+    if(stringsToObj[queries[i]]){
+      queries[i]=stringsToObj[queries[i]]
+    }else{
+      queries[i]=0
+    }
+  }
+  return queries
+}
+
+console.log(matchingStrings(strings, queries));
