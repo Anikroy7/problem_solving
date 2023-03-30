@@ -1,4 +1,4 @@
-// porblem:1 *****
+// FIXME: porblem:1 *****
 
 //Write a program that outputs the top n elements from a list.
 // largest(2, [7, 6, 5, 4, 3, 2, 1])
@@ -38,7 +38,7 @@ function largest(n, array) {
 
 const result = largest(3, [9, 1, 50, 22, 3, 13, 2, 63, 5]);
 
-// porblem:2 *****
+// FIXME: porblem:2 *****
 
 /*
 Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.
@@ -125,7 +125,7 @@ const arrOfObj = arr.reduce((acc, curr) => {
 
 // console.log(new Set(arrOfObj));
 
-//problem 4
+// FIXME:  problem 4
 
 /* 
 There is a collection of input strings and a collection of query strings. For each query string, determine how many times it occurs in the list of input strings. Return an array of the results.
@@ -148,8 +148,8 @@ result =[2,1,0]
                 
 */
 
-const strings = ["ab", "ab", "abc", 'jfk'];
-const queries = ["ab",'ab', "abc", "abd", 'jfk'];
+const strings = ["ab", "ab", "abc", "jfk"];
+const queries = ["ab", "ab", "abc", "abd", "jfk"];
 
 function matchingStrings(strings, queries) {
   // Write your code here
@@ -160,13 +160,59 @@ function matchingStrings(strings, queries) {
   }
 
   for (let i = 0; i < queries.length; i++) {
-    if(stringsToObj[queries[i]]){
-      queries[i]=stringsToObj[queries[i]]
-    }else{
-      queries[i]=0
+    if (stringsToObj[queries[i]]) {
+      queries[i] = stringsToObj[queries[i]];
+    } else {
+      queries[i] = 0;
     }
   }
-  return queries
+  return queries;
 }
 
-console.log(matchingStrings(strings, queries));
+// console.log(matchingStrings(strings, queries));
+
+// TODO: Problem 4
+
+/* 
+ Given an array of integers, where all elements but one occur twice, find the unique element.
+
+ INPUT: [1,2,2,3,3,4,5,5,1];
+ OUTPUT: 4 
+
+ Pseudo code 
+  step 1 : take a variable let it is the unique 
+  value.
+  let unique : array[0]
+  step 2: Itarate this array check value with this variable if again this value come then set this value false. other wise this value will be the unique value. 
+
+  run a loop form 1 no. index
+
+  if arr[i]=== unique 
+  if(!arr[i+1]){
+    unique = arr[i+1]
+  }else{
+    return false
+  }
+    i = i+2
+
+*/
+
+function lonelyinteger(...array) {
+  
+  // Write your code here
+  const arrayToObj = {};
+
+  let unique = false;
+  for (let v of array) {
+    console.log(array);
+      arrayToObj[v] = (arrayToObj[v] || 0) + 1;
+  }
+
+  for (let p in arrayToObj) {
+      if (arrayToObj[p] === 1) unique = p;
+  }
+
+return unique
+}
+
+console.log(lonelyinteger(1, 1 ,2));
